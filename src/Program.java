@@ -4,35 +4,6 @@ public class Program {
     }
 }
 
-interface Bird {
-    void fly();
-    void sit();
-}
-
-class Predator implements Bird{
-    @Override
-    public void fly() {
-        System.out.println(" Хижа літає");
-    }
-
-    @Override
-    public void sit() {
-        System.out.println("Хижа сіла");
-    }
-}
-
-class NonPredatory implements Bird {
-    @Override
-    public void fly() {
-        System.out.println("Нехижа літає");
-    }
-
-    @Override
-    public void sit() {
-        System.out.println("Нехижа сіла");
-    }
-}
-
  abstract class Factory {
     abstract void getBird();
 }
