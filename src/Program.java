@@ -4,20 +4,21 @@ public class Program {
     }
 }
 
- abstract class Factory {
-    abstract void getBird();
-}
-
 class FactoryProducer {
-    public static Bird getFactory() {
-        int r=0;
-        switch (r) {
-            case 0:
+    public Factory getFactory(String factoryType) {
+        switch (factoryType)
+        {
+            case "Predator":
                 return new Predator();
-            case 1:
-                return new NonPredatory();
+            case "Non-Predator":
+                return new NonPredator();
             default:
                 return null;
         }
     }
 }
+
+abstract class Factory {
+    abstract Bird getBird(String species);
+}
+
