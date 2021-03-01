@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public interface Bird {
 
     void fly();
@@ -8,57 +11,58 @@ public interface Bird {
 class Predator extends Factory implements Creator {
     @Override
     public Bird getBird(String s) {
-        System.out.println("Створено хижу пташку");
+        System.out.println(Program.ANSI_RED + "Створено хижу пташку" + Program.ANSI_RESET);
         switch (s)
         {
             case "Eagle":
+                System.out.println(Program.ANSI_RED + "Створено орла" + Program.ANSI_RESET);
                 notifyBirds();
                 return new Eagle();
             case "Hawk":
+                System.out.println(Program.ANSI_RED + "Створено яструба" + Program.ANSI_RESET);
                 notifyBirds();
                 return new Hawk();
             case "Owl":
+                System.out.println(Program.ANSI_RED + "Створено сову" + Program.ANSI_RESET);
                 notifyBirds();
                 return new Owl();
             case "Griffin":
+                System.out.println(Program.ANSI_RED + "Створено грифа" + Program.ANSI_RESET);
                 notifyBirds();
                 return new Griffin();
             default:
                 return null;
         }
     }
-    String [] species = {"Eagle", "Hawk", "Owl", "Griffin"};
-
     @Override
     public void notifyBirds() {
-        System.out.println("Обережно! Літає хижа пташка!");
+        System.out.println(Program.ANSI_RED + "Обережно! Літає хижа пташка!" + Program.ANSI_RESET);
+        for (Bird b: Program.birds) {
+            b.sit();
+        }
     }
 }
 
-class NonPredator extends Factory implements Listener {
+class NonPredator extends Factory {
     @Override
     public Bird getBird(String s) {
-        System.out.println("Створено нехижу пташку");
+        System.out.println(Program.ANSI_GREEN + "Створено нехижу пташку" + Program.ANSI_RESET);
         switch (s)
         {
             case "Tit":
+                System.out.println(Program.ANSI_GREEN + "Створено синицю" + Program.ANSI_RESET);
                 return new Tit();
             case "Dove":
+                System.out.println(Program.ANSI_GREEN + "Створено голуба" + Program.ANSI_RESET);
                 return new Dove();
             case "Lark":
+                System.out.println(Program.ANSI_GREEN + "Створено жайворона" + Program.ANSI_RESET);
                 return new Lark();
             case "Nightingale":
+                System.out.println(Program.ANSI_GREEN + "Створено соловейка" + Program.ANSI_RESET);
                 return new Nightingale();
             default:
                 return null;
-        }
-    }
-    String [] species = {"Tit", "Dove", "Lark", "Nightingale"};
-
-    @Override
-    public void Danger() {
-        for (Bird b: Program.birds) {
-            b.sit();
         }
     }
 }
@@ -73,9 +77,6 @@ class Eagle  extends Predator implements Bird {
     public void sit() {
         System.out.println("Орел сідає");
     }
-    //Орел
-
-
 }
 
 class Hawk extends Predator implements Bird{
@@ -88,7 +89,6 @@ class Hawk extends Predator implements Bird{
     public void sit() {
         System.out.println("Яструб сідає");
     }
-    // Яструб
 }
 
 class Owl extends Predator implements Bird{
@@ -101,7 +101,6 @@ class Owl extends Predator implements Bird{
     public void sit() {
         System.out.println("Сова сідає");
     }
-    //Сова
 }
 
 class Griffin extends Predator implements Bird{
@@ -114,7 +113,6 @@ class Griffin extends Predator implements Bird{
     public void sit() {
         System.out.println("Гриф сідає");
     }
-    //Гриф
 }
 
 class Tit extends NonPredator implements Bird{
@@ -127,7 +125,6 @@ class Tit extends NonPredator implements Bird{
     public void sit() {
         System.out.println("Синиця сідає");
     }
-    //Синиця
 }
 
 class Dove extends NonPredator implements Bird{
@@ -140,7 +137,6 @@ class Dove extends NonPredator implements Bird{
     public void sit() {
         System.out.println("Голуб сідає");
     }
-    //Голуб
 }
 
 class Lark extends NonPredator implements Bird{
@@ -153,7 +149,6 @@ class Lark extends NonPredator implements Bird{
     public void sit() {
         System.out.println("Жайворон сідає");
     }
-    //Жайворон
 }
 
 class Nightingale extends NonPredator implements Bird{
@@ -166,5 +161,4 @@ class Nightingale extends NonPredator implements Bird{
     public void sit() {
         System.out.println("Соловей сідає");
     }
-    //Соловей
 }
