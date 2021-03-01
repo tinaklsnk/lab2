@@ -5,28 +5,37 @@ public interface Bird {
     void sit();
 }
 
-class Predator extends Factory  {
+class Predator extends Factory implements Creator {
     @Override
     public Bird getBird(String s) {
         System.out.println("Створено хижу пташку");
         switch (s)
         {
             case "Eagle":
+                notifyBirds();
                 return new Eagle();
             case "Hawk":
+                notifyBirds();
                 return new Hawk();
             case "Owl":
+                notifyBirds();
                 return new Owl();
             case "Griffin":
+                notifyBirds();
                 return new Griffin();
             default:
                 return null;
         }
     }
     String [] species = {"Eagle", "Hawk", "Owl", "Griffin"};
+
+    @Override
+    public void notifyBirds() {
+        System.out.println("Обережно! Літає хижа пташка!");
+    }
 }
 
-class NonPredator extends Factory {
+class NonPredator extends Factory implements Listener {
     @Override
     public Bird getBird(String s) {
         System.out.println("Створено нехижу пташку");
@@ -45,6 +54,13 @@ class NonPredator extends Factory {
         }
     }
     String [] species = {"Tit", "Dove", "Lark", "Nightingale"};
+
+    @Override
+    public void Danger() {
+        for (Bird b: Program.birds) {
+            b.sit();
+        }
+    }
 }
 
 class Eagle  extends Predator implements Bird {

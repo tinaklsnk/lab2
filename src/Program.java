@@ -4,13 +4,13 @@ import java.util.Random;
 
 public class Program {
     public static List<Bird> birds = new ArrayList<>();
+    public static List<Bird> predatorBirds = new ArrayList<>();
     public static String [] factoryTypes = {"Predator", "NonPredator"};
     public static String [] predators = {"Eagle", "Hawk", "Owl", "Griffin"};
     public static String [] nonPredators = {"Tit", "Dove", "Lark", "Nightingale"};
     public static void main(String[] args) {
         add();
         birdsFly();
-
     }
 
     public static void birdsFly() {
@@ -32,6 +32,7 @@ public class Program {
             //factory = new Predator();
             int rand = generateRandomInt(predators.length);
             Bird b = factory.getBird(predators[rand]);
+            predatorBirds.add(b);
             b.fly();
         }
         else if (factoryTypes[random].equals("NonPredator")) {
