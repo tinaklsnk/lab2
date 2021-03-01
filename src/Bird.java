@@ -8,6 +8,7 @@ public interface Bird {
 class Predator extends Factory  {
     @Override
     public Bird getBird(String s) {
+        System.out.println("Створено хижу пташку");
         switch (s)
         {
             case "Eagle":
@@ -22,11 +23,13 @@ class Predator extends Factory  {
                 return null;
         }
     }
+    String [] species = {"Eagle", "Hawk", "Owl", "Griffin"};
 }
 
 class NonPredator extends Factory {
     @Override
     public Bird getBird(String s) {
+        System.out.println("Створено нехижу пташку");
         switch (s)
         {
             case "Tit":
@@ -41,109 +44,111 @@ class NonPredator extends Factory {
                 return null;
         }
     }
+    String [] species = {"Tit", "Dove", "Lark", "Nightingale"};
 }
 
-class Eagle implements Bird{
+class Eagle  extends Predator implements Bird {
     @Override
     public void fly() {
-
+        System.out.println("Орел літає");
     }
 
     @Override
     public void sit() {
-
+        System.out.println("Орел сідає");
     }
     //Орел
 
+
 }
 
-class Hawk implements Bird{
+class Hawk extends Predator implements Bird{
     @Override
     public void fly() {
-
+        System.out.println("Яструб літає");
     }
 
     @Override
     public void sit() {
-
+        System.out.println("Яструб сідає");
     }
     // Яструб
 }
 
-class Owl implements Bird{
+class Owl extends Predator implements Bird{
     @Override
     public void fly() {
-
+        System.out.println("Сова літає");
     }
 
     @Override
     public void sit() {
-
+        System.out.println("Сова сідає");
     }
     //Сова
 }
 
-class Griffin implements Bird{
+class Griffin extends Predator implements Bird{
     @Override
     public void fly() {
-
+        System.out.println("Гриф літає");
     }
 
     @Override
     public void sit() {
-
+        System.out.println("Гриф сідає");
     }
     //Гриф
 }
 
-class Tit implements Bird{
+class Tit extends NonPredator implements Bird{
     @Override
     public void fly() {
-
+        System.out.println("Синиця літає");
     }
 
     @Override
     public void sit() {
-
+        System.out.println("Синиця сідає");
     }
     //Синиця
 }
 
-class Dove implements Bird{
+class Dove extends NonPredator implements Bird{
     @Override
     public void fly() {
-
+        System.out.println("Голуб літає");
     }
 
     @Override
     public void sit() {
-
+        System.out.println("Голуб сідає");
     }
     //Голуб
 }
 
-class Lark implements Bird{
+class Lark extends NonPredator implements Bird{
     @Override
     public void fly() {
-
+        System.out.println("Жайворон літає");
     }
 
     @Override
     public void sit() {
-
+        System.out.println("Жайворон сідає");
     }
     //Жайворон
 }
 
-class Nightingale implements Bird{
+class Nightingale extends NonPredator implements Bird{
     @Override
     public void fly() {
-
+        System.out.println("Соловей літає");
     }
 
     @Override
     public void sit() {
-
+        System.out.println("Соловей сідає");
     }
     //Соловей
 }
